@@ -1,0 +1,14 @@
+assets.example.com {
+  route {
+	@asset_routes path /fileget* /fileupload* /filedelete* /getmetadata* /testkey* /web_asset_store.xml*
+	replace {
+	  content_type text/xml
+	  "http://assets.example.com:80" "https://assets.example.com"
+	}
+	reverse_proxy @asset_routes asset-server:8080 {
+	  header_up Host {host}
+	  header_up X-Real-IP {remote_host}
+	  header_up X-Forwarded-For {remote_host}
+	}
+  }
+}

@@ -1,0 +1,31 @@
+services:
+  asset-server:
+    restart: unless-stopped
+    image: specifyconsortium/specify-asset-service
+    init: true
+    volumes:
+      # Store all attachments outside the container, in a separate volume
+      - "attachments:/home/specify/attachments"
+    environemnt:
+      - SERVER_NAME=assets.example.com
+      - SERVER_PORT=80
+      - ATTACHMENT_KEY=your_key_here
+      - DEBUG_MODE=false
+  caddy:
+    container_name: caddy
+    build:
+      context: ./.
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy-config:/config
+      - caddy-data:/data
+      - ./Caddyfile:/etc/caddy/Caddyfile
+volumes:
+  attachments:
+  caddy-config:
+  caddy-data:
+
