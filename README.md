@@ -25,7 +25,7 @@ You will need to configure a few values based on your setup
 Run `docker compose up -d`. If this is your first time running the command, you may need to wait a bit for the caddy build to finish. The reason that this takes a while is so the [replace-response plugin](https://github.com/caddyserver/replace-response) can be loaded into the image. 
 
 > [!WARNING]
-> The build process can hang if the system has too few resources. This configuration has loaded fine on a system with 1GB of ram and 1 AMD vCPU.
+> The build process can hang if the system has too few resources. This configuration has loaded fine on a system with 1GB of memory and 1 AMD vCPU.
 
 ## Further considerations
 
