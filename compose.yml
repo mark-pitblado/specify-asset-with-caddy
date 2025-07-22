@@ -6,7 +6,7 @@ services:
     volumes:
       # Store all attachments outside the container, in a separate volume
       - "attachments:/home/specify/attachments"
-    environemnt:
+    environment:
       - SERVER_NAME=assets.example.com
       - SERVER_PORT=80
       - ATTACHMENT_KEY=your_key_here
